@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Day1 {
     public static void main(String[] args) throws Exception {
+        long start = System.currentTimeMillis();
         String[] lines = Utils.readFile("inputs/day1.txt");
         int[] leftColumn = new int[lines.length];
         int[] rightColumn = new int[lines.length];
@@ -36,6 +37,7 @@ public class Day1 {
         }
 
         System.out.println(sum);
+        System.out.println(System.currentTimeMillis() - start);
     }
 
     public static Map<Integer, AtomicInteger> countOcurrences(int[] array) {
