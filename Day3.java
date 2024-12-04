@@ -10,19 +10,17 @@ public class Day3 {
         boolean part2Summing = true;
 
         for (String line : lines) {
-            Pattern regex = Pattern.compile("(mul\\(\\d+,\\d+\\))|(do\\(\\))|(don't\\(\\))");
+            Pattern regex = Pattern.compile("(mul\\((\\d+),(\\d+)\\))|(do\\(\\))|(don't\\(\\))");
             Matcher matcher = regex.matcher(line);
 
             while (matcher.find()) {
                 String mulInstructior = matcher.group(1);
-                boolean doInstruction = matcher.group(2) != null;
-                boolean dontInstruction = matcher.group(3) != null;
-                if (mulInstructior != null) {
-                    String numbers = mulInstructior.substring(4, mulInstructior.length() - 1);
-                    String[] numberLeftRight = numbers.split(",");
+                boolean doInstruction = matcher.group(4) != null;
+                boolean dontInstruction = matcher.group(5) != null;
 
-                    int left = Integer.parseInt(numberLeftRight[0]);
-                    int right = Integer.parseInt(numberLeftRight[1]);
+                if (mulInstructior != null) {
+                    int left = Integer.parseInt(matcher.group(2));
+                    int right = Integer.parseInt(matcher.group(3));
                     if (part2Summing)
                         sumPart2 += left * right;
                     sum += left * right;
